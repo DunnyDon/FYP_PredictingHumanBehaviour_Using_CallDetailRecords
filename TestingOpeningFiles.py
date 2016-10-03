@@ -1,4 +1,4 @@
-import os
+import os, hashlib
 root = "D:\Airtel-Chad-USSD-MO-CDR's-6months"
 USSDRequestHeaders = ["SubscriberID","ServiceID","Transaction","Date","Time","CDRCorrelationID","MSISDN","IMSI","SessionID","USSDContent"]
 USSDResponseHeaders = ["SubscriberID","ServiceID","Transaction","Date","Time","CDRCorrelationID","MSISDN","SessionID","USSDContent","Status","ErrorCode"]
@@ -13,6 +13,8 @@ for root, dirs, files in os.walk(root):
 				print line.split(",")[2]
 				if int(line.split(",")[2]) == 1:
 					for i in line.split(","):
+						if USSDRequestHeaders[count] == "IMSI":
+							i=hashlib.md5(i.encode()).hexdigest()
 						print USSDRequestHeaders[count]," ",i
 						count+=1
 				else:
