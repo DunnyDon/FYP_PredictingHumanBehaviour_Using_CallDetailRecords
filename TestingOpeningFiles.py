@@ -2,15 +2,15 @@ import os, hashlib
 import pymongo
 from pymongo import MongoClient
 root = "D:\Airtel-Chad-USSD-MO-CDR's-6months"
-USSDRequestHeaders = ["SubID","ServID","Trans","Date","Time","CDRID","MSISDN","IMSI","SessID","USSD"]
-USSDResponseHeaders = ["SubID","ServID","Trans","Date","Time","CDRID","MSISDN","SessID","USSD","Status","Error"]
+USSDRequestHeaders = ["SubID","ServID","Trans","Date","Time","CDRID","MSISDN","IMSI","SesID","USSD"]
+USSDResponseHeaders = ["SubID","ServID","Trans","Date","Time","CDRID","MSISDN","SesID","USSD","Status","Error"]
 
 for root, dirs, files in os.walk(root):
 	for FILENAME in files:
 		listofdocuments = []
 		client = MongoClient()
 		db = client.FYP_Airtel_Storage
-		collection = db.Airtel_Data_Storage
+		collection = db.FYP_Capped_Data
 		if not FILENAME.endswith('.gz'):
 			fd = open(root+"\\"+FILENAME, 'r')
 			#print(FILENAME)
