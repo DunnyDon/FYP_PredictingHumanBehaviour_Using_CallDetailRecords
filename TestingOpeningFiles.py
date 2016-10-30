@@ -34,6 +34,8 @@ for root, dirs, files in os.walk(root):
 						if USSDResponseHeaders[count] in enter_to_database:
 							if '\n' in i:
 								i=i.strip('\n')
+							if USSDResponseHeaders[count] == "MSISDN":
+								i=hashlib.md5(i.encode()).hexdigest()
 							#print USSDResponseHeaders[count]," ",i
 							document_content[USSDResponseHeaders[count]] = i
 						count+=1
