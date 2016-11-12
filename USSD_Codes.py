@@ -4,7 +4,7 @@ import re
 client = MongoClient()
 #this will work on the local database
 db = client.FYP_Airtel_Storage
-collect = db.FYP_Capped_Data
+collect = db.FYP_Data
 new_collection = db.FYP_USSD_Codes
 #connect to the database and the correct collection
 percent = 0.0
