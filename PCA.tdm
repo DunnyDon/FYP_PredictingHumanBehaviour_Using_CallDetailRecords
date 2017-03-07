@@ -1,0 +1,8 @@
+[Diagram]
+Title=Default title
+Database=C:\Users\Conor\Documents\GitHub\FYP\ML_Data_PCA.xls
+
+[Dataset]
+MLClassGenerator=TMLGenDataset
+successors=0
+

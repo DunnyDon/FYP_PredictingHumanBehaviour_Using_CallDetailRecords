@@ -4,35 +4,34 @@ import re
 client = MongoClient()
 db = client.FYP_Airtel_Storage
 everything = db.FYP_Data
-cursor = everything.find({},{"IMSI":1})
-imsi_array = cursor[:]
+cursor = everything.find({},{"MSISDN":1})
 one = 0
 two = 0
 three = 0
 fourplus = 0
-total = imsi_array.count()
+msisdn_array = []
+for i in cursor:
+	#save each value in arrays
+	msisdn_array.append(i["MSISDN"])
+total = msisdn_array.count()
 print total
 count = 0
-for i in imsi_array:
-	number = i["IMSI"]
+for i in msisdn_array:
+	number = i["MSISDN"]
 	print number
-	if number in imsi_array:
-		print True
-	else:
-		print False
-	countnum = everything.find({"IMSI":number}).count()
+	countnum = everything.find({"MSISDN":number, "Trans":"1"}).count()
 	print countnum
 	if  countnum == 1:
-		print "One"
+		print i,"\t","One"
 		one+=1
 	elif countnum == 2:
-		print "Two"
+		print i,"\tTwo"
 		two+=1
 	elif countnum == 3:
-		print "Three"
+		print i,"\tThree"
 		three+=1
 	elif countnum > 3:
-		print "Four"
+		print i,"\tFour"
 		fourplus+=1
 
 print "1 : ", one
