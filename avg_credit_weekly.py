@@ -25,6 +25,7 @@ def count_perWeek():
 	ussd_regex = '^\*130'
 	ussd = re.compile(ussd_regex)
 	cursor = collect.find({"$and": [{"USSD":{"$regex":ussd}},{"Trans":"1"}]},{'USSD':1,'Date':1,'Time':1,'_id':0}, no_cursor_timeout=True)
+
 	for i in cursor:
 		dattim = convert_DateTime(i)
 		wk = dattim.isocalendar()[1]

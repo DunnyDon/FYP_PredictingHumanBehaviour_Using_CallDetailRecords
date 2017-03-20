@@ -1,0 +1,28 @@
+Community 0 Credit 32.0922879177 Call me Back 58.0151670951 Size 3890
+Community 1 Credit 43.5918367347 Call me Back 72.9183673469 Size 49
+Community 2 Credit 32.2622652938 Call me Back 77.9254996972 Size 1651
+Community 3 Credit 32.2826086957 Call me Back 119.847826087 Size 46
+Community 4 Credit 34.5372424723 Call me Back 87.2107765452 Size 631
+Community 5 Credit 30.3390804598 Call me Back 61.3275862069 Size 348
+Community 6 Credit 31.9268774704 Call me Back 71.5928853755 Size 506
+Community 7 Credit 23.2426243945 Call me Back 38.5808014091 Size 4542
+Community 8 Credit 24.6164819111 Call me Back 82.3646128727 Size 11637
+Community 9 Credit 33.0785714286 Call me Back 50.5285714286 Size 560
+Community 10 Credit 32.9959016393 Call me Back 75.4988290398 Size 1708
+Community 11 Credit 26.9763134461 Call me Back 77.9868210151 Size 5615
+Community 12 Credit 31.2015880018 Call me Back 85.8001764446 Size 2267
+Community 13 Credit 38.2141073658 Call me Back 60.9650436954 Size 3204
+Community 14 Credit 21.404773997 Call me Back 59.3595733875 Size 1969
+Community 15 Credit 34.6734104046 Call me Back 50.4046242775 Size 346
+Community 16 Credit 33.5600490196 Call me Back 85.481004902 Size 1632
+Community 17 Credit 26.7632398754 Call me Back 51.3769470405 Size 321
+Community 18 Credit 27.315498155 Call me Back 32.0166051661 Size 542
+Community 19 Credit 23.0823194408 Call me Back 60.5353352317 Size 3863
+Community 20 Credit 19.75 Call me Back 68.29296875 Size 256
+Community 21 Credit 26.15625 Call me Back 140.84375 Size 32
+Mean:
+	Credit 30.0028785511
+	Top Up 71.3124442279
+Standard Deviations:
+	Credit 5.5953736725
+	Top Up 23.948876226
