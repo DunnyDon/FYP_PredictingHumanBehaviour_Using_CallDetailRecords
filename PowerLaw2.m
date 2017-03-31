@@ -1,4 +1,4 @@
-filename ='Degree_Distribution_Data.csv';
+filename = 'Weighted_Degree_Distribution_Data.csv';
 M = csvread(filename);
 for i = 1:length(M)
     x(i)=M(i,1);

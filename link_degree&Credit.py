@@ -3,9 +3,9 @@ from pymongo import MongoClient
 from datetime import datetime, date, time
 import matplotlib.pyplot as plt
 client = MongoClient()
-db = client.FYP_Airtel_Storage
-collect = db.Big_Comp_Users
-topUp_db = db.Users_Degree
+db = client.FYP_Demo
+collect = db.Degree_Credit_Demo
+topUp_db = db.Weighted_Users_Degree
 users = []
 top_count={}
 def get_users():

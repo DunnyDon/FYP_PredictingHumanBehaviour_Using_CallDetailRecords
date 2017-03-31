@@ -7,7 +7,7 @@ f = open("Community_Data.txt",'a')
 client = MongoClient()
 #this will work on the local database
 db = client.FYP_Airtel_Storage
-collect = db.Users_Degree
+collect = db.Weighted_Users
 community_data = {}
 community_data["CredCount"]={}
 community_data["TopUp"] = {}
@@ -17,10 +17,10 @@ for i in range(0,22):
 	community_data["TopUp"][i] = 0
 print "Starting........."
 for j in range(0,22):
-	community_size = collect.find({"$and": [{"mod_class":j},{"CredCount":{"$ne":0}},{"out_degree":{"$ne":0}}]},{'CredCount':1,'out_degree':1,'_id':0}).count()
+	community_size = collect.find({"$and": [{"mod_class":j},{"CredCount":{"$gt":0}},{"out_degree":{"$gt":0}}]},{'CredCount':1,'out_degree':1,'_id':0}).count()
 	#community_size = collect.find({"mod_class":j},{'CredCount':1,'out_degree':1,'_id':0}, no_cursor_timeout=True)
 	#cursor = collect.find({"$and": [{"mod_class":j},{"CredCount":{"$ne":0}},]},{'CredCount':1,'out_degree':1,'_id':0}, no_cursor_timeout=True)
-	cursor = collect.find({"$and": [{"mod_class":j},{"CredCount":{"$ne":0}},{"out_degree":{"$ne":0}}]},{'CredCount':1,'out_degree':1,'_id':0}, no_cursor_timeout=True)
+	cursor = collect.find({"$and": [{"mod_class":j},{"CredCount":{"$gt":0}},{"out_degree":{"$gt":0}}]},{'CredCount':1,'out_degree':1,'_id':0}, no_cursor_timeout=True)
 	#{"$and": [{"mod_class":j},{"CredCount":{"$ne":"0"}},{"out_degree":{"$ne":"0"}}]}
 	count_topups = 0
 	count_callmes = 0	
@@ -31,7 +31,7 @@ for j in range(0,22):
 	community_data["TopUp"][j] = count_callmes/(float(community_size))
 	to_write = "Community "+str(j)+ " Credit "+ str(count_topups/(float(community_size)))+" Call me Back "+str(count_callmes/(float(community_size)))+ " Size "+ str(community_size)
 	print to_write
-	#f.write(str(to_write)+'\n')
+	f.write(str(to_write)+'\n')
 data_dict =community_data["CredCount"]
 def get_mean(data_diction):
 	sum = 0.0
@@ -65,21 +65,31 @@ print "\tCredit ", cred_dev
 print "\tTop Up ", topUp_dev
 std_dev_write_cred = "Standard Deviations:\n\tCredit "+str(cred_dev)+"\n\tTop Up "+ str(topUp_dev)
 std_dev_write_top = "Mean:\n\tCredit "+str(mean_cred)+"\n\tTop Up "+ str(mean_top)
-#f.write(std_dev_write_top)
-#f.write(std_dev_write_cred)
+f.write(std_dev_write_top)
+f.write(std_dev_write_cred)
 x = data_dict.keys()
 y = data_dict.values()
-cred = plt.scatter(x,y)
-plt.xlabel('Commmunity')
+cred = plt.figure(1)
+plt.scatter(x,y)
+plt.xlabel('Commmunity Number')
 plt.ylabel('Normalised Total')
+av = plt.axhline(y=mean_cred, color='k')
+plt.title('Average Top Ups per community')
+plt.legend([av],["Average"])
+cred.show()
 data =community_data["TopUp"]
 x_topup = data.keys()
 y_topup = data.values()
-cmb = plt.scatter(x_topup,y_topup,color='r')
-plt.legend([cred,cmb],["Credit Top Ups","Call Me Back Request"])
-plt.title('Normalised Call me Back Requests && Top Ups')
-plt.axhline(y=mean_cred, color='k')
-plt.axhline(y=mean_top, color = 'g')
+
+cmb = plt.figure(2)
+plt.scatter(x_topup,y_topup,color='r')
+#plt.legend([cred,cmb],["Credit Top Ups","Call Me Back Request"])
+plt.title('Average Call me Back Requests')
+plt.xlabel('Commmunity Number')
+plt.ylabel('Normalised Total')
+avgr = plt.axhline(y=mean_top, color = 'g')
+plt.legend([avgr],["Average"])
+cmb.show()
 #plt.axis([0,50000, -250,1300])
 plt.show()
 f.close()

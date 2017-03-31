@@ -24,7 +24,7 @@ def count_perMonth():
 	month_count_dict={}
 	for k in range(2,9):
 		month_count_dict[k] = 0
-	ussd_regex = '^\*701'
+	ussd_regex = '^\*130'
 	ussd = re.compile(ussd_regex)
 	for j in range(2,9):
 		d = '-0'+str(j)+'-'
@@ -40,7 +40,7 @@ def count_perMonth():
 def get_average(data_vals):
 	sum=0.0
 	for i in data_vals:
-		sum+=i
+		sum+=data_vals[i]
 	print sum
 	average = float(sum)/float(len(data_vals))
 	return average
@@ -60,3 +60,9 @@ avg = get_average(data_per_Month)
 print 'Average is ',avg
 for i in data_per_Month:
 	print i,data_per_Month[i]
+plt.plot(data_per_Month,'r')
+plt.axhline(y=avg, color='b')
+plt.ylabel('Number of Credit Top Ups per week')
+plt.xlabel('Week')
+plt.title('Weekly Count of Credit Top Ups')
+plt.show()

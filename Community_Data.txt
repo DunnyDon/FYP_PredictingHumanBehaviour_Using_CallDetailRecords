@@ -22,7 +22,6 @@ Community 20 Credit 19.75 Call me Back 68.29296875 Size 256
 Community 21 Credit 26.15625 Call me Back 140.84375 Size 32
 Mean:
 	Credit 30.0028785511
-	Top Up 71.3124442279
-Standard Deviations:
+	Top Up 71.3124442279Standard Deviations:
 	Credit 5.5953736725
 	Top Up 23.948876226

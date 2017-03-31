@@ -25,7 +25,6 @@ def count_perWeek():
 	ussd_regex = '^\*130'
 	ussd = re.compile(ussd_regex)
 	cursor = collect.find({"$and": [{"USSD":{"$regex":ussd}},{"Trans":"1"}]},{'USSD':1,'Date':1,'Time':1,'_id':0}, no_cursor_timeout=True)
-
 	for i in cursor:
 		dattim = convert_DateTime(i)
 		wk = dattim.isocalendar()[1]
@@ -51,7 +50,7 @@ def count_perWeek():
 def get_average(data_vals):
 	sum=0.0
 	for i in data_vals:
-		sum+=i
+		sum+=data_vals[i]
 	print sum
 	average = float(sum)/float(len(data_vals))
 	return average
@@ -71,7 +70,7 @@ avg = get_average(data_per_week)
 print 'Average is ',avg
 for i in data_per_week:
 	print i,data_per_week[i]
-plt.plot(data_per_week,'r')
+plt.plot(data_per_week.keys(),data_per_week.values(),'r')
 plt.axhline(y=avg, color='b')
 plt.ylabel('Number of Credit Top Ups per week')
 plt.xlabel('Week')

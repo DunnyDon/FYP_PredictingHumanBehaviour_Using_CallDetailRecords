@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 client = MongoClient()
 #this will work on the local database
 db = client.FYP_Airtel_Storage
-collect = db.Big_Comp_Users
+collect = db.Weighted_Users
 credit = []
 def get_users():
 	#get a limited abount of ussd codes and save them in an array

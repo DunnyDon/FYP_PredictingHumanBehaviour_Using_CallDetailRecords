@@ -1,5 +1,5 @@
 #gets top up of each user and plots
-
+import statistics
 import pymongo
 from pymongo import MongoClient
 import re,threading
@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 client = MongoClient()
 #this will work on the local database
 db = client.FYP_Airtel_Storage
-collect = db.Big_Comp_Users
+collect = db.Weighted_Users
 topUp_db = db.CallMe_TopUp
 topUpCount = []
 	
@@ -49,6 +49,7 @@ def get_TopUp_Num(i):
 	ussd = re.compile(ussd_regex)
 	c = topUp_db.find({"$and": [{"MSISDN":i},{"USSD":{"$regex":ussd}},{"Trans":"1"}]}).count()
 	print i,c
+	collect.update({"MSISDN":i},{"$set":{"CredCount":c}})
 	topUpCount.append(c)
 
 def get_average(data_vals):
@@ -71,4 +72,5 @@ def print_plot(user_data,avg):
 
 start_process()
 avg = get_average(topUpCount)
-print_plot(topUpCount,avg)
+print statistics.stdev(topUpCount)
+#print_plot(topUpCount,avg)
